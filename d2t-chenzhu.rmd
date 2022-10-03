@@ -30,6 +30,9 @@ skim (USJudgeRatings) #==> skim through the dataset
 ```
 
 ### exploring `historydata` (not a base-R package)
+
+- Lincoln Mullen, ‘Data Sets for Historians [R Package Historydata Version 0.1]’ (24 December 2014) <https://CRAN.R-project.org/package=historydata>
+
  
 ```{r , eval = TRUE, echo = FALSE }
 install.packages (historydata)
