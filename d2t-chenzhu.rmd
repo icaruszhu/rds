@@ -1,0 +1,112 @@
+# Dare To Tinker (R markdown file)
+<!-- Chen Zhu: Code demonstration for Msc Responsible Data Science (RDS) students [2022-10-04 Tuesday] -->
+
+
+## exploring law-related datasets in R 
+### US Judges Ratings (base-R)
+
+```{r} 
+library(skimr)
+
+data()
+
+str (USJudgeRatings) #==> a dataframe
+
+
+head (USJudgeRatings, n = 20)
+tail (USJudgeRatings)
+colnames (USJudgeRatings)
+
+USJudgeRatings[,1]
+
+## list Judges' names by using the ~rownames~ function
+rownames (USJudgeRatings)
+
+## list all the 12 variables (i.e. column names)
+colnames (USJudgeRatings)
+
+
+skim (USJudgeRatings) #==> skim through the dataset
+```
+
+### exploring `historydata` (not a base-R package)
+ 
+```{r , eval = TRUE, echo = FALSE }
+install.packages (historydata)
+
+library (tidyverse)
+library (historydata)
+
+# description of the datasets
+?historydata
+?judges
+                                        #==>  Federal judges in the United States of America since 1789; two dataframes ‘judges_people’ and ‘judges_appointments’.
+
+#---------------------------
+# how many variables in `judges_people`?
+colnames (judges_people) # 13 variables
+
+# how to find judges' age range? 
+judges_people$birth_date 
+
+## two ways of doing this
+sort (judges_people$birth_date)
+judges_people$birth_date %>% sort() # using pipe (from `tidyverse`)
+
+# histogram of judges birth years
+judges_people$birth_date %>% hist()
+#==> where is the peak of this histogram? (most judges were born in which decade?)
+
+# find a particular judge: [eg] Judge Alsup (Oracle vs Google)
+"Alsup" %in% judges_people$name_last
+
+alsup <- judges_people[judges_people$name_last == "Alsup", ]
+
+str (alsup) 
+alsup %>% str # use pipe (from "tidyverse")
+
+#---------------------------
+# race and gender of judges
+judges_people$race
+judges_people$gender
+
+# how many "races" in this dataset
+judges_people$race %>% unique () 
+
+
+# white
+judges_people[judges_people$race == "White",]
+
+# white and female
+judges_people[judges_people$race == "White" & judges_people$gender == "F", ] # white female judges
+
+# “Black” judges (African American)
+judges_people[judges_people$race == "African American",]
+
+# female black judges
+judges_people[judges_people$race == "African American"  & judges_people$gender == "F", ]
+
+```
+# shell command
+## date and calendar 
+
+```{shell}
+
+date
+
+cal Oct 2022
+cal sep 1752
+
+
+```
+## for loop
+```{shell}
+for i in $(seq 1 10); do echo "RDS$i"; done
+```
+
+## grep
+```{shell}
+grep -ri law *
+```
+
+ 
