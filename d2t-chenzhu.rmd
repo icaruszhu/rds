@@ -11,7 +11,9 @@ library(skimr)
 data()
 
 str (USJudgeRatings) #==> a dataframe
-
+?USJudgeRatings
+require(graphics)
+pairs(USJudgeRatings, main = "USJudgeRatings data")
 
 head (USJudgeRatings, n = 20)
 tail (USJudgeRatings)
@@ -54,13 +56,16 @@ judges_people$birth_date
 
 ## two ways of doing this
 sort (judges_people$birth_date)
+
 judges_people$birth_date %>% sort() # using pipe (from `tidyverse`)
 
-# histogram of judges birth years
+unique (judges_people$birth_date) %>% sort()
+
+# visualisation: histogram of judges birth years
 judges_people$birth_date %>% hist()
 #==> where is the peak of this histogram? (most judges were born in which decade?)
 
-# find a particular judge: [eg] Judge Alsup (Oracle vs Google)
+# find a particular judge: [eg] Is Judge Alsup (Oracle vs Google) in this data?
 "Alsup" %in% judges_people$name_last
 
 alsup <- judges_people[judges_people$name_last == "Alsup", ]
@@ -73,8 +78,9 @@ alsup %>% str # use pipe (from "tidyverse")
 judges_people$race
 judges_people$gender
 
-# how many "races" in this dataset
-judges_people$race %>% unique () 
+# how diverse judges' ethinical background? how many "races" in this dataset?
+judges_people$race 
+judges_people$race %>% unique() 
 
 
 # white
@@ -94,7 +100,6 @@ judges_people[judges_people$race == "African American"  & judges_people$gender =
 ## date and calendar 
 
 ```{shell}
-
 date
 
 cal Oct 2022
