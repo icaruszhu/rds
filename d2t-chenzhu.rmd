@@ -1,5 +1,6 @@
 # Dare To Tinker (R markdown file)
-<!-- Chen Zhu: Code demonstration for Msc Responsible Data Science (RDS) students [2022-10-04 Tuesday] -->
+- Chen Zhu (Birmingham Law School)
+- Code demonstration for UoB Msc Responsible Data Science (RDS) students (October 2022)
 
 
 ## exploring law-related datasets in R 
